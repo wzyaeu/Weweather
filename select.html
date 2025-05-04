@@ -237,6 +237,16 @@
             });
         });
 
+        const title = document.querySelectorAll('.title');
+        title.forEach(item => {
+            item.addEventListener('click', function() {
+                const targetUrl = this.dataset.url;
+                if (targetUrl) {
+                    window.location.href = targetUrl;
+                }
+            });
+        });
+
         const SponsorsButton = document.querySelectorAll('.city-sponsors');
         SponsorsButton.forEach(item => {
             item.addEventListener('click', function() {
@@ -284,8 +294,9 @@
 
     <div class="control-bar">
         <div class="control-group">
-            <h1 class="title">Weweather 与天天气</h1>
-            <button class="control-btn" data-url="index.html">地区选择</button>
+            <button class="title" data-url="https://weweather.dpdns.org/index.html">Weweather 与天天气</button>
+            <button class="control-btn" data-url="https://weweather.dpdns.org/select.html">地区选择</button>
+            <button class="control-btn" data-url="https://weweather.dpdns.org/termservice.html">服务条款</button>
         </div>
     </div>
 
@@ -298,19 +309,19 @@
         <h3 class="category-title">直辖市</h3>
         <div class="category-content">
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 北京</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 上海</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 天津</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 重庆</h1>
             </div>
         </div>
@@ -319,91 +330,91 @@
         <h3 class="category-title">省行政区</h3>
         <div class="category-content">
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 安徽</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 福建</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 甘肃</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 广东</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 贵州</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 海南</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 河北</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 河南</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 黑龙江</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 湖北</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 湖南</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 吉林</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 江苏</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 江西</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 辽宁</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 青海</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 山东</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 山西</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 陕西</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 四川</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 云南</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 浙江</h1>
             </div>
         </div>
@@ -412,23 +423,23 @@
         <h3 class="category-title">自治区</h3>
         <div class="category-content">
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 广西</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 内蒙古</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 宁夏</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 西藏</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 新疆</h1>
             </div>
         </div>
@@ -437,15 +448,15 @@
         <h3 class="category-title">特别行政区</h3>
         <div class="category-content">
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 澳门</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 香港</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 台湾</h1>
             </div>
         </div>
@@ -454,27 +465,27 @@
         <h3 class="category-title">外国地区</h3>
         <div class="category-content">
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">法国 巴黎 Paris</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">日本 东京 東京</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">新加坡 Singapore</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">英国 伦敦 London</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">美国 纽约 NewYork</h1>
             </div>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">澳大利亚 悉尼 Sydney</h1>
             </div>
         </div>
@@ -483,7 +494,7 @@
         <div class="category-content">
             <h3 class="title-3">赞助作者可自选地域进行持续更新（买断制仅需￥3！）</h3>
             <div class="citylist_item" data-url="index.html">
-                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <img src="https://img.picui.cn/free/2025/05/04/6817512a8fed0.png" class="city-goto" alt="前往">
                 <h1 class="city-title">中国 北京</h1>
                 <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/sponsors-img/测试头像.png" class="city-sponsors-img" alt="前往">
                 <h1 class="city-sponsors" data-url="https://bilibili.com">由某某某赞助</h1>

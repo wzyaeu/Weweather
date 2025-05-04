@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Weweather 与天天气</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #E1FFFF, #D4F2E7);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative; 
+        }
+
+        .title {
+            color: #48D1CC;
+            font-size: 2rem;
+            text-align: center;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        .title-2 {
+            color: #92e3e1;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            margin: 5px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            margin-top: 150px;
+        }
+
+        .citylist {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 10px;
+            max-width: 600px;
+            width: 90%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .city-title {
+            color: #c6faf8;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 8px;
+            width: auto;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .citylist_item {
+            cursor: pointer;
+            background-color: #76ccc9a7;
+            border-radius: 10px;
+            margin: 5px;
+            align-items: center;
+            transition: background-color 0.3s;
+            display: flex;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+
+
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background-color: #7bd4d1;
+            color: #c6faf8;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 1; 
+            visibility: visible;
+            z-index: 1000;
+            transition: background-color 0.3s ease-out;
+        }
+        
+        .back-to-top:hover {
+            background-color: #3ab7b3;
+        }
+        
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .control-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 15px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .control-btn {
+            color: #48D1CC ;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            height: 40px;
+            font-size: 15px;
+        }
+
+        .control-btn:hover {
+            color: #7cd6d3 ;
+        }
+
+        .h1{
+            color: #48D1CC;
+            font-size: 2.3rem;
+            text-align: center;
+            margin: 10px;
+            font-weight: bold;
+        }
+        .h2{
+            color: #70d4d1;
+            font-size: 1.8rem;
+            text-align: center;
+            margin: 6px;
+            font-weight: bold;
+        }
+        .p{
+            color: #000000;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .ul{
+            color: #000000;
+            font-size: 1rem;
+            text-align: center;
+            margin: 4px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cityListItems = document.querySelectorAll('.citylist_item');
+            cityListItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetUrl = this.dataset.url;
+                    if (targetUrl) {
+                        window.location.href = targetUrl;
+                    }
+                });
+            });
+    
+            const controlButton = document.querySelectorAll('.control-btn');
+            controlButton.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetUrl = this.dataset.url;
+                    if (targetUrl) {
+                        window.location.href = targetUrl;
+                    }
+                });
+            });
+    
+            const title = document.querySelectorAll('.title');
+            title.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetUrl = this.dataset.url;
+                    if (targetUrl) {
+                        window.location.href = targetUrl;
+                    }
+                });
+            });
+    
+            const SponsorsButton = document.querySelectorAll('.city-sponsors');
+            SponsorsButton.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetUrl = this.dataset.url;
+                    if (targetUrl) {
+                        window.location.href = targetUrl;
+                    }
+                });
+            });
+    
+            const categoryTitles = document.querySelectorAll('.category-title');
+            categoryTitles.forEach(title => {
+                const content = title.nextElementSibling;
+                content.style.maxHeight = '0';
+                content.classList.add('collapsed');
+                
+                title.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    if (content.classList.contains('collapsed')) {
+                        content.classList.remove('collapsed');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        setTimeout(() => {
+                            content.classList.add('collapsed');
+                            content.style.maxHeight = '0';
+                        }, 10);
+                    }
+                });
+            });
+    
+            const backToTopButton = document.getElementById('backToTop');
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="control-bar">
+        <div class="control-group">
+            <button class="title" data-url="https://weweather.dpdns.org/index.html">Weweather 与天天气</button>
+            <button class="control-btn" data-url="https://weweather.dpdns.org/select.html">地区选择</button>
+            <button class="control-btn" data-url="https://weweather.dpdns.org/termservice.html">服务条款</button>
+        </div>
+    </div>
+
+    
+    <h3 class="title-2">服务条款</h3>
+
+    <div class="citylist">
+        <h1 class="h1">与天天气服务条款</h1>
+<h2 class="h2">1. 接受条款</h2>
+<p class="p">通过访问和使用本网站，您同意遵守本服务条款及所有适用法律法规。如果您不同意这些条款，请立即停止使用本网站。</p>
+<h2 class="h2">2. 服务说明</h2>
+<p class="p">本网站提供天气信息及相关服务（以下简称"服务"），包括但不限于天气预报、气象数据和警报。本网站可能包含赞助商链接或第三方广告（统称"赞助链接"）。</p>
+<h2 class="h2">3. 数据准确性免责声明</h2>
+<p class="p">3.1 本网站提供的天气信息来源于第三方数据提供商。天气数据本质为预测性信息，可能存在误差。</p>
+<p class="p">3.2 <strong>本网站不对所提供天气信息的准确性、完整性或及时性作任何保证</strong>。用户依赖本网站信息所采取的任何行动均需自行承担风险。</p>
+<p class="p">3.3 本网站及其相关方不因信息误差导致的直接或间接损失承担责任，包括但不限于财产损失、人身伤害或商业损失。</p>
+<h2 class="h2">4. 赞助链接与第三方服务</h2>
+<p class="p">4.1 本网站可能包含通往第三方网站/服务的赞助链接，这些链接：</p>
+<ul class="ul">
+<li>仅为用户提供便利而存在</li>
+<li>不代表本网站对第三方内容/服务的认可</li>
+<li>其呈现不构成任何形式的合作或关联声明</li>
+</ul>
+<p class="p">4.2 <strong>第三方服务条款优先原则</strong>：
+当用户通过本网站的赞助链接跳转至第三方网站时：</p>
+<ul class="ul">
+<li>用户与第三方的关系完全受该第三方服务条款约束</li>
+<li>本网站的服务条款即刻终止适用</li>
+<li>用户应仔细阅读并同意第三方条款后再使用其服务</li>
+</ul>
+<p class="p">4.3 本网站：</p>
+<ul class="ul">
+<li>不控制第三方网站的内容、隐私政策或服务条款</li>
+<li>不对第三方服务的合法性、安全性或准确性负责</li>
+<li>不承担因使用第三方服务导致的任何损失</li>
+</ul>
+<h2 class="h2">5. 服务变更与中断</h2>
+<p class="p">5.1 保留随时修改/中止服务的权利，无需提前通知。</p>
+<p class="p">5.2 不保证服务持续无中断或无错误，对因此导致的后果不承担责任。</p>
+<h2 class="h2">6. 用户义务</h2>
+<p class="p">禁止：</p>
+<ul class="ul">
+<li>干扰网站正常运行</li>
+<li>未经授权访问系统</li>
+<li>自动化抓取数据（未获书面许可时）</li>
+</ul>
+<h2 class="h2">7. 全面免责声明</h2>
+<p class="p">在法律允许的最大范围内：</p>
+<ul class="ul">
+<li>排除所有明示/默示保证</li>
+<li>不保证服务无病毒或有害组件</li>
+<li>不保证赞助链接的安全性</li>
+</ul>
+<h2 class="h2">8. 责任限制</h2>
+<p class="p">任何情况下，本网站及相关方对以下情况不承担责任：</p>
+<ul class="ul">
+<li>使用/无法使用服务导致的直接/间接损失</li>
+<li>通过赞助链接获取的商品/服务质量问题</li>
+<li>第三方服务的任何作为或不作为</li>
+</ul>
+<h2 class="h2">9. 条款修改</h2>
+<p class="p">修改后的条款自公布时生效，继续使用视为接受修改。</p>
+<h2 class="h2">10. 法律适用</h2>
+<p class="p">受中华人民共和国法律管辖，争议提交本网站运营方所在地法院诉讼解决。</p>
+<h2 class="h2">11. 其他</h2>
+<p class="p">11.1 部分条款无效不影响其余条款效力</p>
+<p class="p">11.2 本条款构成完整协议，取代先前所有约定</p>
+        <div class="citylist_item" data-url="https://weweather.dpdns.org/termservice.md">
+            <h1 class="city-title">查看MD文件</h1>
+        </div>
+    </div>
+    <button class="back-to-top" id="backToTop" title="返回顶部">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+</body>
+</body>
+
+</html>
