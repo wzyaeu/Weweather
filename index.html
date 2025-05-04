@@ -10,22 +10,493 @@
         body {
             background: linear-gradient(to bottom right, #E1FFFF, #D4F2E7);
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative; 
         }
 
-        .custom-heading {
+        .title {
             color: #48D1CC;
-            font-size: 2.5rem;
+            font-size: 2rem;
             text-align: center;
-            margin-top: 20px;
+            margin: 10px;
             font-weight: bold;
         }
+
+        .title-2 {
+            color: #92e3e1;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            margin: 5px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            margin-top: 150px;
+        }
+
+        .title-3 {
+            color: #5edad8;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            margin: 2px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .category-title {
+            color: #f0ffffa7;
+            font-size: 1.7rem;
+            text-align: center;
+            font-weight: bold;
+            margin: 2px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: #7bd4d1;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        
+
+        .category-content {
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .category-content.collapsed {
+            max-height: 0 !important;
+        }
+
+        .city-title {
+            color: #c6faf8;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 8px;
+            width: auto;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .city-sponsors {
+            color: #63aaa8;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 8px;
+            width: auto;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .city-goto {
+            fill: #dafffe;
+            width: 20px;
+            margin: 5px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .city-sponsors-img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        .citylist {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 10px;
+            max-width: 600px;
+            width: 90%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .citylist_item {
+            cursor: pointer;
+            background-color: #76ccc9a7;
+            border-radius: 10px;
+            margin: 5px;
+            align-items: center;
+            transition: background-color 0.3s;
+            display: flex;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        .citylist_item:hover {
+            background-color: #8ececca7;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background-color: #7bd4d1;
+            color: #c6faf8;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 1; 
+            visibility: visible;
+            z-index: 1000;
+            transition: background-color 0.3s ease-out;
+        }
+        
+        .back-to-top:hover {
+            background-color: #3ab7b3;
+        }
+        
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .control-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 15px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .control-btn {
+            color: #48D1CC ;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            height: 40px;
+            font-size: 15px;
+        }
+
+        .control-btn:hover {
+            color: #7cd6d3 ;
+        }
     </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cityListItems = document.querySelectorAll('.citylist_item');
+        cityListItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const targetUrl = this.dataset.url;
+                if (targetUrl) {
+                    window.location.href = targetUrl;
+                }
+            });
+        });
+
+        const controlButton = document.querySelectorAll('.control-btn');
+        controlButton.forEach(item => {
+            item.addEventListener('click', function() {
+                const targetUrl = this.dataset.url;
+                if (targetUrl) {
+                    window.location.href = targetUrl;
+                }
+            });
+        });
+
+        const SponsorsButton = document.querySelectorAll('.city-sponsors');
+        SponsorsButton.forEach(item => {
+            item.addEventListener('click', function() {
+                const targetUrl = this.dataset.url;
+                if (targetUrl) {
+                    window.location.href = targetUrl;
+                }
+            });
+        });
+
+        const categoryTitles = document.querySelectorAll('.category-title');
+        categoryTitles.forEach(title => {
+            const content = title.nextElementSibling;
+            content.style.maxHeight = '0';
+            content.classList.add('collapsed');
+            
+            title.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                if (content.classList.contains('collapsed')) {
+                    content.classList.remove('collapsed');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    setTimeout(() => {
+                        content.classList.add('collapsed');
+                        content.style.maxHeight = '0';
+                    }, 10);
+                }
+            });
+        });
+
+        const backToTopButton = document.getElementById('backToTop');
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
 </head>
 
 <body>
-    <h1 class="custom-heading">Weweather 与天天气</h1>
-    <!-- 可在这里添加网页内容 -->
+
+    <div class="control-bar">
+        <div class="control-group">
+            <h1 class="title">Weweather 与天天气</h1>
+            <button class="control-btn" data-url="index.html">地区选择</button>
+        </div>
+    </div>
+
+    
+    <h3 class="title-2">地区选择</h3>
+
+    <div class="citylist">
+        <h3 class="title-3">我们提供了30+持续更新的地区天气预报供您选择</h3>
+        <!-- 直辖市 -->
+        <h3 class="category-title">直辖市</h3>
+        <div class="category-content">
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 北京</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 上海</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 天津</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 重庆</h1>
+            </div>
+        </div>
+    
+        <!-- 省行政区 (按拼音排序) -->
+        <h3 class="category-title">省行政区</h3>
+        <div class="category-content">
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 安徽</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 福建</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 甘肃</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 广东</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 贵州</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 海南</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 河北</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 河南</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 黑龙江</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 湖北</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 湖南</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 吉林</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 江苏</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 江西</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 辽宁</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 青海</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 山东</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 山西</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 陕西</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 四川</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 云南</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 浙江</h1>
+            </div>
+        </div>
+    
+        <!-- 自治区 -->
+        <h3 class="category-title">自治区</h3>
+        <div class="category-content">
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 广西</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 内蒙古</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 宁夏</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 西藏</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 新疆</h1>
+            </div>
+        </div>
+    
+        <!-- 特别行政区 -->
+        <h3 class="category-title">特别行政区</h3>
+        <div class="category-content">
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 澳门</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 香港</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 台湾</h1>
+            </div>
+        </div>
+    
+        <!-- 外国地区 (按字母排序) -->
+        <h3 class="category-title">外国地区</h3>
+        <div class="category-content">
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">法国 巴黎 Paris</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">日本 东京 東京</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">新加坡 Singapore</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">英国 伦敦 London</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">美国 纽约 NewYork</h1>
+            </div>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">澳大利亚 悉尼 Sydney</h1>
+            </div>
+        </div>
+
+        <h3 class="category-title">赞助者自选</h3>
+        <div class="category-content">
+            <h3 class="title-3">赞助作者可自选地域进行持续更新（买断制仅需￥3！）</h3>
+            <div class="citylist_item" data-url="index.html">
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/icon-img/go.svg" class="city-goto" alt="前往">
+                <h1 class="city-title">中国 北京</h1>
+                <img src="https://raw.githubusercontent.com/wzyaeu/Weweather/refs/heads/main/source/sponsors-img/测试头像.png" class="city-sponsors-img" alt="前往">
+                <h1 class="city-sponsors" data-url="https://bilibili.com">由某某某赞助</h1>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-to-top" id="backToTop" title="返回顶部">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+</body>
 </body>
 
 </html>
-    
